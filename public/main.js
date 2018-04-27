@@ -1,12 +1,14 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const isDev = require('electron-is-dev');
+const path = require('path');
 
 let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({width: 900, height: 680});
-  mainWindow.loadURL('http://localhost:3000');
+  mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
 
   app.setAboutPanelOptions({
     applicationName: "Markdown Editor",

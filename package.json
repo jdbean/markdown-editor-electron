@@ -2,20 +2,44 @@
   "name": "markdown-editor",
   "version": "0.1.0",
   "main": "public/main.js",
+  "homepage": "./",
   "private": true,
   "dependencies": {
+    "@skidding/react-codemirror": "^1.0.2",
+    "electron-is-dev": "^0.3.0",
+    "highlight.js": "^9.12.0",
+    "lodash.assign": "^4.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-icons": "^2.2.7",
+    "react-markdown": "^3.3.0",
+    "react-scripts": "1.1.4",
+    "react-split-pane": "^0.1.77"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron-start": "electron ."
+    "electron-start": "electron .",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "build --em.main=build/main.js",
+    "preelectron-pack": "yarn build"
   },
   "devDependencies": {
-    "electron": "^1.8.6"
+    "concurrently": "^3.5.1",
+    "electron": "^1.8.6",
+    "electron-builder": "19.26.3",
+    "wait-on": "^2.1.0"
+  },
+  "build": {
+    "appId": "com.markdowneditor",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
