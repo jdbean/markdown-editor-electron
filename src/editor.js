@@ -23,6 +23,7 @@ class Editor extends Component {
     var options = {
       mode: 'markdown',
       theme: 'monokai',
+      lineWrapping: true,
     }
     return (
       <CodeMirror

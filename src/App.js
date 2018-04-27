@@ -33,7 +33,7 @@ class App extends Component {
 
     ipc.on('save-file', (event) => {
       dialog.showSaveDialog((filename) => {
-        if(filename == undefined){
+        if(filename === undefined){
           return;
         }
 
